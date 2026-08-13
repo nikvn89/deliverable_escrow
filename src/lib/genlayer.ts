@@ -95,7 +95,7 @@ async function waitForReceiptResilient(params: {
         // Keep each SDK polling window bounded. If the RPC transport fails,
         // the outer loop retries with backoff without ever resubmitting tx.
         retries: i < 2 ? 30 : 18,
-      })
+      } as any)
     } catch (error) {
       lastError = error
 
@@ -165,7 +165,7 @@ async function readString(
       functionName,
       args: [],
       stateStatus: 'accepted',
-    }),
+    } as any),
   )
 
   return typeof result === 'string' ? result : String(result ?? '')
